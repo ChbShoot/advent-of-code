@@ -35,3 +35,5 @@
 *.sln
 *.pyproj
 *.txt
+.vs/slnx.sqlite
+*.json

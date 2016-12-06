@@ -62,4 +62,22 @@ def part2():
                     print("Found! " + pos)
                     print (abs(x) + abs(y))
                     found = True
-part2()
+
+def draw():
+    been = list()
+    for instruction in input.split(', '):
+            if instruction[0] == 'R':
+                turn(1)
+            elif instruction[0] == 'L':
+                turn (-1)
+            for i in range(0, int(instruction[1:])):
+                move(1)
+                pos = [(x, y)]
+                been += pos
+    been.sort()
+    temp = tuple(map(sorted, zip(*been)))
+    min_x, max_x, min_y, max_y = temp[0][0], temp[0][-1], temp[1][0], temp[1][-1]
+    width = abs (max_x - min_x) + 1
+    height = abs (max_y - min_y) + 1
+
+draw()
