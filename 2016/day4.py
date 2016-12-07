@@ -56,5 +56,3 @@ def part2_processline(line):
 def cipher(letter, rotation):
     delet = (letter + rotation) % 26
     return chr(delet + 97) # make ascii great again
-    
-part2()
