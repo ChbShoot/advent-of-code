@@ -22,15 +22,39 @@ def part1():
         if realname == checksum:
             sum += int(sector_id)
     print (sum)
+
+
+
+
 key = 'abcdefghijklmnopqrstuvwxyz'
 def part2():
     for line in input:
         if line is "":
             continue
-        encrypted_name = line[0:(line.rfind("-"))]
-        sector_id = int(line[(line.rfind("-")+1):(line.find('['))])
-        checksum = line[(line.find("[")+1):(line.find(']'))]
-        word = ""
-        for letter in encrypted_name:
-         
+        room = part2_processline(line)
+        if 'north' in room[0]:
+            print (room)
+
+def part2_processline(line):
+    encrypted_name = line[0:(line.rfind("-"))]
+    sector_id = int(line[(line.rfind("-")+1):(line.find('['))])
+    checksum = line[(line.find("[")+1):(line.find(']'))]
+    word = ""
+    # letter loop
+    for letter in encrypted_name:
+        if letter is not '-':
+            x = ord(letter) - 97
+            n = sector_id % 26 
+            word += cipher(x, n)
+        else:
+            word += ' '
+    return (word, sector_id)
+
+# Caesar cipher
+    # https://en.wikipedia.org/wiki/Caesar_cipher
+    # Encrypt (x) = (x + n) mod 26
+def cipher(letter, rotation):
+    delet = (letter + rotation) % 26
+    return chr(delet + 97) # make ascii great again
+    
 part2()
