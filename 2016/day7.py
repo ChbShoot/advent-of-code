@@ -91,4 +91,5 @@ def part2():
     return goods
 
 
+print ("Good IP Addresses: {0}".format(part1()))
 print ("SSL IP Addresses: {0}".format(part2()))
